@@ -1,11 +1,14 @@
 import React from "react";
 
+//Redux
+import { connect } from "react-redux"
+
 import PokemonItem from "./PokemonItem";
 
-const PokeList = () => {
+const PokeList = ({ click }) => {
   return (
     <div className="list-container">
-      <h2>Try : 0</h2>
+      <h2>Essais : { click }</h2>
       <h2>Pokedex</h2>
       <ul>
         <PokemonItem />
@@ -16,4 +19,15 @@ const PokeList = () => {
   );
 };
 
-export default PokeList;
+/**
+ * Récupération du state
+ * @param click
+ * @returns {{click}}
+ */
+const mapStateToProps = ({ click }) => {
+    return {
+        click
+    }
+}
+
+export default connect(mapStateToProps)(PokeList);
