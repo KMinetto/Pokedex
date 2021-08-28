@@ -1,5 +1,5 @@
 import initialState from './initialState'
-import { CLICK } from "./action";
+import { CLICK, FETCH_POKEMON_SUCESS } from "./action";
 
 /**
  * Création du Reducer
@@ -12,6 +12,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 click: state.click + 1
+            }
+        case FETCH_POKEMON_SUCESS:
+            return {
+                ...state,
+                pokemons: action.pokemons
             }
         default:
             return state
