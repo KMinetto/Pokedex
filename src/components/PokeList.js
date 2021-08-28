@@ -5,15 +5,22 @@ import { connect } from "react-redux"
 
 import PokemonItem from "./PokemonItem";
 
-const PokeList = ({ click }) => {
+const PokeList = ({ click, pokemons }) => {
+
+    console.log(pokemons)
+
   return (
     <div className="list-container">
       <h2>Essais : { click }</h2>
-      <h2>Pokedex</h2>
+      <h2> { pokemons.filter(pokemon => pokemon.isCaught).length } / {
+          pokemons.length
+      }</h2>
       <ul>
-        <PokemonItem />
-        <PokemonItem />
-        <PokemonItem />
+          {
+              pokemons.map(pokemon => (
+                  <PokemonItem key={pokemon.id} pokemon={pokemon} />
+              ))
+          }
       </ul>
     </div>
   );
@@ -24,9 +31,10 @@ const PokeList = ({ click }) => {
  * @param click
  * @returns {{click}}
  */
-const mapStateToProps = ({ click }) => {
+const mapStateToProps = ({ click, pokemons }) => {
     return {
-        click
+        click,
+        pokemons
     }
 }
 

@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./styles.css";
 
 //Redux
 import { connect } from "react-redux"
-import { CLICK } from "./store/action";
+import {CLICK} from "./store/action";
 
 import GameBoy from "./components/GameBoy";
 import PokeList from "./components/PokeList";
+import fetchPokemons from "./store/fetchPokemons";
 
-const App = ({ click }) => {
+const App = ({ click, fetchPokemons }) => {
+
+    useEffect(() => {
+        fetchPokemons()
+    }, [fetchPokemons])
+
   return (
     <div className="App">
         <button onClick={() => click()}>click</button>
@@ -25,6 +31,7 @@ const App = ({ click }) => {
  */
 const mapDispatchToProps = dispatch => {
     return {
+        fetchPokemons: () => dispatch(fetchPokemons()),
         click: () => dispatch({ type: CLICK })
     }
 }
