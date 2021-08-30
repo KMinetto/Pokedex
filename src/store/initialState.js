@@ -4,7 +4,8 @@
  */
 const initialState = {
     click: 0,
-    pokemons: []
+    pokemons: [],
+    pending: false
 }
 
 export default initialState
