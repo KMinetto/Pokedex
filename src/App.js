@@ -8,6 +8,7 @@ import {CLICK} from "./store/action";
 import GameBoy from "./components/GameBoy";
 import PokeList from "./components/PokeList";
 import fetchPokemons from "./store/fetchPokemons";
+import Loader from "./components/Loader";
 
 const App = ({ click, fetchPokemons, pending }) => {
 
@@ -16,7 +17,7 @@ const App = ({ click, fetchPokemons, pending }) => {
     }, [fetchPokemons])
 
     if (pending) {
-        return <p>Chargement...</p>
+        return <Loader />
     }
 
   return (
