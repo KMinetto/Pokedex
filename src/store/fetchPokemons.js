@@ -1,6 +1,6 @@
 import {fetchPokemonPending, fetchPokemonSuccess} from "./action";
 
-const numberOfPokemon = 300;
+const numberOfPokemon = 10;
 const urls = [];
 
 for (let i = 1; i <= numberOfPokemon; i++) {
