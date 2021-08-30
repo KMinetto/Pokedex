@@ -5,9 +5,9 @@ import { connect } from "react-redux"
 
 import PokemonItem from "./PokemonItem";
 
-const PokeList = ({ click, pokemons }) => {
+const PokeList = ({ click, pokemons, pending }) => {
 
-    console.log(pokemons)
+    console.log(pending)
 
   return (
     <div className="list-container">
@@ -31,10 +31,11 @@ const PokeList = ({ click, pokemons }) => {
  * @param click
  * @returns {{click}}
  */
-const mapStateToProps = ({ click, pokemons }) => {
+const mapStateToProps = ({ click, pokemons, pending }) => {
     return {
         click,
-        pokemons
+        pokemons,
+        pending
     }
 }
 
