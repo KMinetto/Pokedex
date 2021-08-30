@@ -27,7 +27,6 @@ const App = ({ click, fetchPokemons, pending, showPokemon, capturePokemon, pokem
 
   return (
     <div className="App">
-        <button onClick={() => click()}>click</button>
       <GameBoy showPokemon={ () => showPokemon(pokemons) } capturePokemon={ capturePokemon } />
       <PokeList />
     </div>
