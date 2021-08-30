@@ -3,7 +3,7 @@ import "./styles.css";
 
 //Redux
 import { connect } from "react-redux"
-import { CLICK, showPokemonAction } from "./store/action";
+import { CLICK, showPokemonAction, capturePokemonAction } from "./store/action";
 
 
 import GameBoy from "./components/GameBoy";
@@ -11,11 +11,15 @@ import PokeList from "./components/PokeList";
 import fetchPokemons from "./store/fetchPokemons";
 import Loader from "./components/Loader";
 
-const App = ({ click, fetchPokemons, pending, showPokemon, pokemons }) => {
+const App = ({ click, fetchPokemons, pending, showPokemon, capturePokemon, pokemons }) => {
 
     useEffect(() => {
         fetchPokemons()
     }, [fetchPokemons])
+
+    useEffect(() => {
+        console.log(pokemons)
+    }, [pokemons])
 
     if (pending) {
         return <Loader />
@@ -24,7 +28,7 @@ const App = ({ click, fetchPokemons, pending, showPokemon, pokemons }) => {
   return (
     <div className="App">
         <button onClick={() => click()}>click</button>
-      <GameBoy showPokemon={ () => showPokemon(pokemons) } />
+      <GameBoy showPokemon={ () => showPokemon(pokemons) } capturePokemon={ capturePokemon } />
       <PokeList />
     </div>
   );
@@ -46,7 +50,8 @@ const mapDispatchToProps = dispatch => {
     return {
         fetchPokemons: () => dispatch(fetchPokemons()),
         click: () => dispatch({ type: CLICK }),
-        showPokemon: pokemons => dispatch(showPokemonAction(pokemons))
+        showPokemon: pokemons => dispatch(showPokemonAction(pokemons)),
+        capturePokemon: () => dispatch(capturePokemonAction())
     }
 }
 
