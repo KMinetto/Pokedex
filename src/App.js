@@ -3,14 +3,15 @@ import "./styles.css";
 
 //Redux
 import { connect } from "react-redux"
-import {CLICK} from "./store/action";
+import { CLICK, showPokemonAction } from "./store/action";
+
 
 import GameBoy from "./components/GameBoy";
 import PokeList from "./components/PokeList";
 import fetchPokemons from "./store/fetchPokemons";
 import Loader from "./components/Loader";
 
-const App = ({ click, fetchPokemons, pending }) => {
+const App = ({ click, fetchPokemons, pending, showPokemon, pokemons }) => {
 
     useEffect(() => {
         fetchPokemons()
@@ -23,15 +24,16 @@ const App = ({ click, fetchPokemons, pending }) => {
   return (
     <div className="App">
         <button onClick={() => click()}>click</button>
-      <GameBoy />
+      <GameBoy showPokemon={ () => showPokemon(pokemons) } />
       <PokeList />
     </div>
   );
 };
 
-const mapStateToProps = ({ pending }) => {
+const mapStateToProps = ({ pending, pokemons }) => {
     return {
-        pending
+        pending,
+        pokemons
     }
 }
 
@@ -43,7 +45,8 @@ const mapStateToProps = ({ pending }) => {
 const mapDispatchToProps = dispatch => {
     return {
         fetchPokemons: () => dispatch(fetchPokemons()),
-        click: () => dispatch({ type: CLICK })
+        click: () => dispatch({ type: CLICK }),
+        showPokemon: pokemons => dispatch(showPokemonAction(pokemons))
     }
 }
 

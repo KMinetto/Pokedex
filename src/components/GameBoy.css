@@ -212,6 +212,7 @@
   right: 0%;
   top: 33%;
   position: absolute;
+  cursor: pointer;
 }
 
 .down-box {
@@ -244,6 +245,7 @@
   width: 33%;
   top: 33%;
   position: absolute;
+  cursor: pointer;
 }
 
 .arrow {

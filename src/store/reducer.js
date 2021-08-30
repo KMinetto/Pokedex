@@ -1,9 +1,15 @@
 import initialState from './initialState'
-import {CLICK, FETCH_POKEMON_PENDING, FETCH_POKEMON_SUCESS} from "./action";
+import {
+    CLICK,
+    FETCH_POKEMON_PENDING,
+    FETCH_POKEMON_SUCESS,
+    SHOW_POKEMON
+} from "./action";
 
 /**
  * Création du Reducer
  * @param state
+ * @param action
  * @returns {{click: number}}
  */
 const reducer = (state = initialState, action) => {
@@ -23,6 +29,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 pending: true
+            }
+        case SHOW_POKEMON:
+            return {
+                ...state,
+                onScreen: action.onScreen
             }
         default:
             return state
