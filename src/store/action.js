@@ -39,3 +39,15 @@ export const showPokemonAction = (pokemons) => {
 
     return dispatch => dispatch({ type: SHOW_POKEMON, onScreen })
 }
+
+/**
+ * Capture des pokémons
+ * @type {string}
+ */
+export const CAPTURE_POKEMON = 'CAPTURE_POKEMON'
+
+export const capturePokemonAction = () => {
+    console.log('catch')
+    const rand = Math.floor(Math.random() * 255)
+    return dispatch => dispatch({ type: CAPTURE_POKEMON, rand })
+}
